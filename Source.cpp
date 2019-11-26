@@ -2,96 +2,57 @@
 
 using namespace std;
 
-void lowest(int* arr, int size, int& i);
-void greatest(int* arr, int size, int& i);
-
 int main()
 {
+	int rows, columns;
+	cout << "Enter the number of rows: ";
+	cin >> rows;
+	cout << "Enter the number of columns: ";
+	cin >> columns;
 
-	int size; // declaring the size of array
-	cout << "Size of array: ";
-	cin >> size;
-	int* arr = new int[size]; // Declaring the array
+	int** matrix = new int*[rows];
 
-	for (int i = 0; i < size; i++) { // input values to the array
-		cout << "value for index " << i << ": ";
-		cin >> arr[i];
-	}
-	int i = 0;
+	for(int i = 0; i < rows; i++)
+		matrix[i] = new int[columns];
 
-
-	cout << "Do you want to order from lowest, greatest, or both? ";
-	string answer;
-	cin >> answer;
-	if (answer == "lowest")
-	{
-		lowest(arr, size, i);
-	}
-	else if(answer == "greatest")
-	{
-		greatest(arr, size, i);
-	}
-	else if (answer == "both") {
-		lowest(arr, size, i);
-		cout << endl;
-		greatest(arr, size, i);
-	}
-	else {
-		cout << "Please select lowest or greatest...";
-	}
-	return 0;
-}
-
-#if 0
-void lowest(int* arr, int size, int& i) {
-	int temp = INT_MAX; // maximum value to compare
-
-	for (int i = 0; i < size; i++) { // scanning for the lowest value
-		if (arr[i] < temp) {
-			temp = arr[i];
+	cout << "Your matrix: " << endl;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			cin >> matrix[i][j];
 		}
+		cout << "\n";
 	}
-	for (i = 0; i < size; i++) { // looking for the index with the lowest value
-		if (arr[i] == temp) {
-			break;
-		}
-	}
-	swap(arr[0], arr[i]); // Swap the lowest value with the first index
 
-	for (int i = 0; i < size; i++) {
-		cout << arr[i] << " "; // displaying the values
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			cout << matrix[i][j] << " ";
+		}
+		cout << "\n";
+	}
+	cout << endl;
+	// --------------------------
+
+	int rows2 = columns;
+	int columns2 = rows; //2 3
+
+
+
+	int** matrix2 = new int*[rows2];
+	
+	for (int i = 0; i < rows2; i++)
+		matrix2[i] = new int[columns2];
+
+	for (int i = 0; i < rows2; i++) {
+		for (int j = 0; j < columns2; j++) {
+			matrix2[i][j] = matrix[j][i];
+		}
+		cout << "\n";
+	}
+
+	for (int i = 0; i < rows2; i++) {
+		for (int j = 0; j < columns2; j++) {
+			cout << matrix2[i][j] << " ";
+		}
+		cout << "\n";
 	}
 }
-#endif
-
-void lowest(int* arr, int size, int& i) {
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size-1; j++) {
-			if (arr[j] > arr[j+1]) {
-				swap(arr[j], arr[j+1]);
-			}
-		}
-	}
-
-	for (int i = 0; i < size; i++) {
-		cout << arr[i] << " "; // displaying the values
-	}
-	cout << "(lowest)";
-}
-
-void greatest(int* arr, int size, int& i) {
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size - 1; j++) {
-			if (arr[j] < arr[j + 1]) {
-				swap(arr[j], arr[j + 1]);
-			}
-		}
-	}
-
-	for (int i = 0; i < size; i++) {
-		cout << arr[i] << " "; // displaying the values
-	}
-	cout << "(highest)";
-}
-
-
