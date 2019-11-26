@@ -4,55 +4,24 @@ using namespace std;
 
 int main()
 {
-	int rows, columns;
-	cout << "Enter the number of rows: ";
-	cin >> rows;
-	cout << "Enter the number of columns: ";
-	cin >> columns;
+	cout << "Enter a string: ";
 
-	int** matrix = new int*[rows];
+	const int SIZE = 1001;
+	char inputStr[SIZE];
+	cin.getline(inputStr, SIZE);
 
-	for(int i = 0; i < rows; i++)
-		matrix[i] = new int[columns];
+	cout << "Enter character to search for: ";
+	char letter;
 
-	cout << "Your matrix: " << endl;
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			cin >> matrix[i][j];
+	cin >> letter;
+	int duplicates = 0;
+	for (int i = 0; i < SIZE; i++) {
+		if (inputStr[i] == letter) {
+			duplicates++;
 		}
-		cout << "\n";
 	}
 
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			cout << matrix[i][j] << " ";
-		}
-		cout << "\n";
-	}
-	cout << endl;
-	// --------------------------
+	cout << "Character \'" << letter << "\' occurs "<< duplicates << " times in the given string" << endl;
+	cout << "\"" << inputStr << "\"";
 
-	int rows2 = columns;
-	int columns2 = rows; //2 3
-
-
-
-	int** matrix2 = new int*[rows2];
-	
-	for (int i = 0; i < rows2; i++)
-		matrix2[i] = new int[columns2];
-
-	for (int i = 0; i < rows2; i++) {
-		for (int j = 0; j < columns2; j++) {
-			matrix2[i][j] = matrix[j][i];
-		}
-		cout << "\n";
-	}
-
-	for (int i = 0; i < rows2; i++) {
-		for (int j = 0; j < columns2; j++) {
-			cout << matrix2[i][j] << " ";
-		}
-		cout << "\n";
-	}
 }
