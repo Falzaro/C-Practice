@@ -2,26 +2,27 @@
 
 using namespace std;
 
-int main()
-{
-	cout << "Enter a string: ";
+bool checkPrime(int n);
 
-	const int SIZE = 1001;
-	char inputStr[SIZE];
-	cin.getline(inputStr, SIZE);
+int main(){
 
-	cout << "Enter character to search for: ";
-	char letter;
+	int max;
+	cout << "Enter max number: ";
+	cin >> max;
 
-	cin >> letter;
-	int duplicates = 0;
-	for (int i = 0; i < SIZE; i++) {
-		if (inputStr[i] == letter) {
-			duplicates++;
-		}
-	}
+	for (int i = 2; i < max; i++) 
+		if (checkPrime(i)) 
+			cout << i << " ";
 
-	cout << "Character \'" << letter << "\' occurs "<< duplicates << " times in the given string" << endl;
-	cout << "\"" << inputStr << "\"";
-
+	return 0;
 }
+
+
+bool checkPrime(int n) 
+{
+	for (int i = 2; i < n; i++)
+		if (n % i == 0)
+			return false;
+	return true;
+}
+
