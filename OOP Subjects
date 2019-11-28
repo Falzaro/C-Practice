@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+
+using namespace std;
+
+class Class {
+public:
+	int physics, english, history, calculus;
+	string name;
+	Class(string name) {
+		this->name = name;
+		physics = 50 + rand() % 50;
+		english = 50 + rand() % 50;
+		history = 50 + rand() % 50;
+		calculus = 50 + rand() % 50;
+	}
+
+	void display() {
+		int sum = physics + english + history + calculus;
+		int average = sum / 4;
+		cout
+			<< name << " \n"
+			<< "Physics" << ": " << physics << " "
+			<< "English" << ": " << english << " "
+			<< "History" << ": " << history << " "
+			<< "Calculus" << ": " << calculus << "\n"
+			<< "Average = " << average << "\n\n";
+	}
+};
+int speedUp = 0;
+
+int main()
+{
+	srand(time(NULL) + speedUp);
+	int num = 0;
+	Class fitri("Fitri"), ali("Ali"), aidil("Aidil"), william("William");
+	fitri.display(); aidil.display(); ali.display(); william.display();
+
+}
