@@ -1,0 +1,22 @@
+#include<iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void reverse(string word , int i)
+{
+	cout << word[i];
+	if (i == 0)
+		return;
+
+	reverse(word, i-1);
+}
+
+int main()
+{
+	string word = "hello";
+	int i = word.size() -1;
+	reverse(word, i);
+	return 0;
+}
