@@ -1,1 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include "Header.h"
+
+using namespace std;
+
+string reverse(string words)
+{
+	int i = words.size() - 1;
+	if (i == 0)
+		return words;
+
+	string appendToStr;
+	appendToStr += words[i];
+	words.pop_back();
+	
+	return appendToStr + reverse(words);
+}
+int main()
+{
+	string words = "Spell this backwards!";
+
+	cout<< reverse(words);
+
+
+	return 0;
+}
 
