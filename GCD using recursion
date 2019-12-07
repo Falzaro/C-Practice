@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int GCD(int number1, int number2)
+{
+	if (number1 < number2)
+		return GCD(number2, number1);
+
+	if (number1 % number2 == 0)
+		return number2;
+
+	return GCD(number1 % number2, number2);
+}
+
+int main()
+{
+	cout << GCD(21, 14);
+	
+}
