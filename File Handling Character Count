@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream inputFile("file.txt"); // opening the file
+
+	char inputChar[100];
+	int i = 0;
+
+	while (!inputFile.eof()) // inputting the characters into a character array
+	{
+		inputFile >> inputChar[i];
+		i++;
+	}
+
+	cout << "Number of characters: " << i-1; // displaying the number of characters
+}
