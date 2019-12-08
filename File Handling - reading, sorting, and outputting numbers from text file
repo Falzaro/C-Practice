@@ -1,0 +1,64 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ofstream myFile("temp.txt");
+
+	 //write to the file
+
+	myFile << "5 -8 7 2 10 4 15";
+
+	myFile.close();
+
+	ifstream inputFile;
+	inputFile.open("temp.txt");
+
+
+	int size = 0, read = 0;
+	while (inputFile >> read)
+	{
+		size++;
+	}
+
+	cout << "Numbers: " << size << endl; // displaying the number of characters
+	inputFile.close();
+
+	ifstream outputFile("temp.txt");
+
+	int* arr = new int[size] , j = 0;
+	while (!outputFile.eof()) {
+		outputFile >> arr[j];
+			j++;
+	}
+
+	for(int x = 0; x < size; x++)
+		cout << arr[x] << " ";
+
+	cout << endl;
+
+	for(int i = 0; i < size; i++)
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (arr[j] > arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << " ";
+
+	outputFile.close();
+
+	fstream sortedFile;
+
+	sortedFile.open("temp.txt", ios::app);
+	sortedFile << "\n";
+	for (int i = 0; i < size; i++)
+	{
+		sortedFile << arr[i] << " ";
+	}
+
+	sortedFile.close();
+}
