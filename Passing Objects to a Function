@@ -1,0 +1,44 @@
+#include <iostream>
+#include <iomanip>
+
+class Animal
+{
+private:
+	std::string name;
+	int legs;
+public:
+	Animal(std::string name, int legs) 
+		: name(name), legs(legs)
+	{
+		std::cout << "Constructor Called" << std::endl;
+
+		Display1();
+	}
+
+	void Display1() const
+	{
+		std::cout << name << " " << legs << std::endl;
+	}
+
+	void Display2(const Animal& bird, const Animal& cat) const;
+};
+
+void Animal::Display2(const Animal& bird, const Animal& cat) const
+{
+	std::cout << bird.name << " " << bird.legs << std::endl;
+	std::cout << cat.name << " " << cat.legs << std::endl;
+	std::cout << name << " " << legs << std::endl;
+}
+
+int main()
+{
+
+	Animal bird("Swifty", 2);
+	Animal cat("Omay", 3);
+	Animal dog("Clifford", 4);
+
+	std::cout << std::endl << "Function Dislay2 called: " << std::endl;
+	dog.Display2(bird, cat);
+
+	return 0;
+}
